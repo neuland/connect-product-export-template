@@ -6,16 +6,6 @@ deployAs:
       postDeploy: npm install
     configuration:
       securedConfiguration:
-        - key: CTP_PROJECT_KEY
-          description: Commercetools project key
-        - key: CTP_CLIENT_ID
-          description: Commercetools client ID
-        - key: CTP_CLIENT_SECRET
-          description: Commercetools client secreet
-        - key: CTP_SCOPE
-          description: Commercetools client scope
-        - key: CTP_REGION
-          description: Region of Commercetools project
         - key: SEARCH_PLATFORM_CONFIG
           description: Escaped JSON object including credentails to search platform and other settings
   - name: incremental-updater
@@ -26,17 +16,14 @@ deployAs:
       preUndeploy: npm install && npm run connector:pre-undeploy
     configuration:
       securedConfiguration:
-        - key: CTP_STORE_KEY
-          description: Unique key of Commercetools Store
-        - key: CTP_PROJECT_KEY
-          description: Commercetools project key
-        - key: CTP_CLIENT_ID
-          description: Commercetools client ID
-        - key: CTP_CLIENT_SECRET
-          description: Commercetools client secreet
-        - key: CTP_SCOPE
-          description: Commercetools client scope
-        - key: CTP_REGION
-          description: Region of Commercetools project
         - key: SEARCH_PLATFORM_CONFIG
           description: Escaped JSON object including credentails to search platform and other settings
+
+inheritAs:
+  apiClient:
+    scopes:
+      - manage_subscriptions
+      - view_stores
+      - view_products
+      - view_product_selections
+      - view_types
